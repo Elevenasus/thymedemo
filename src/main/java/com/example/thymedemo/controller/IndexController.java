@@ -16,7 +16,7 @@ import java.net.URLEncoder;
 
 /**
  * @author shkstart
- * @create 2022-09-01-17:28
+ * @create 2022-09-01-17:28  测试
  */
 @Controller
 @Slf4j
@@ -41,7 +41,7 @@ public class IndexController {
         if (!targetFile.exists()) {
             targetFile.mkdirs();
         }
-        try (FileOutputStream out = new FileOutputStream(filepath + file.getOriginalFilename());){
+        try (FileOutputStream out = new FileOutputStream(filepath + file.getOriginalFilename())){
             out.write(file.getBytes());
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,9 +63,9 @@ public class IndexController {
             response.setHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(filename,"utf8"));
             byte[] buffer = new byte[1024];
             //输出流
-            OutputStream os = null;
+            OutputStream os;
             try(FileInputStream fis= new FileInputStream(file);
-                BufferedInputStream bis = new BufferedInputStream(fis);) {
+                BufferedInputStream bis = new BufferedInputStream(fis)) {
                 os = response.getOutputStream();
                 int i = bis.read(buffer);
                 while(i != -1){
